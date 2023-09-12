@@ -1277,9 +1277,9 @@ export class ChatwootService {
         }
 
         this.logger.verbose('get conversation in chatwoot');
-        const getConversion = await this.createConversation(instance, body);
+        const getConversation = await this.createConversation(instance, body);
 
-        if (!getConversion) {
+        if (!getConversation) {
           this.logger.warn('conversation not found');
           return;
         }
@@ -1351,7 +1351,7 @@ export class ChatwootService {
             this.logger.verbose('message is not group');
 
             this.logger.verbose('send data to chatwoot');
-            const send = await this.sendData(getConversion, fileName, messageType, bodyMessage);
+            const send = await this.sendData(getConversation, fileName, messageType, bodyMessage);
 
             if (!send) {
               this.logger.warn('message not sent');
@@ -1387,7 +1387,7 @@ export class ChatwootService {
           }
 
           this.logger.verbose('send data to chatwoot');
-          const send = await this.createMessage(instance, getConversion, content, messageType);
+          const send = await this.createMessage(instance, getConversation, content, messageType);
 
           if (!send) {
             this.logger.warn('message not sent');
@@ -1408,7 +1408,7 @@ export class ChatwootService {
           this.logger.verbose('message is not group');
 
           this.logger.verbose('send data to chatwoot');
-          const send = await this.createMessage(instance, getConversion, bodyMessage, messageType);
+          const send = await this.createMessage(instance, getConversation, bodyMessage, messageType);
 
           if (!send) {
             this.logger.warn('message not sent');
